@@ -3,11 +3,11 @@ title: "First Steps with R and RStudio"
 author: Matt Steele
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     toc-depth: 1
+  pdf_document:
+    toc: yes
 keep-latex: true
 ---
 
@@ -29,9 +29,9 @@ browseURL("https://rstudio.com/")
 
 ```
   
-### Learning Platform
+### O'Reilly Learning Platform
   
-```{r eval=FALSE}
+```{r oreilly learning platform, eval=FALSE}
 
 browseURL("https://databases.lib.wvu.edu/connect/1540334373")
 
@@ -39,7 +39,7 @@ browseURL("https://databases.lib.wvu.edu/connect/1540334373")
   
 ### R Programming for Statistics and Data Science
   
-```{r eval=FALSE}
+```{r oreilly course, eval=FALSE}
 
 browseURL("https://libwvu.on.worldcat.org/oclc/1062397089")
 
@@ -429,6 +429,8 @@ cbind(vec_one, vec_two, vec_three)
 
 # Creating Data Frames
 
+[data.frame documentation]("https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html")
+
 two dimensional arrays that can multiple classes of values.
 
   - syntax: *dataFrameSyntax <- data.frame(column1, column2, column3)*
@@ -437,15 +439,22 @@ two dimensional arrays that can multiple classes of values.
 
 #LINE 437
 
- title <- c("Star Wars", "The Empire Strikes Back", "Return of the Jedi")
-  year <- c(1972, 1980, 1983)
-  length.min <- c(121, 124, 133)
-  box.office.mil <- c(787, 534, 572)
+# create vectors
+title <- c("Star Wars", "The Empire Strikes Back", "Return of the Jedi")
+year <- c(1972, 1980, 1983)
+length.min <- c(121, 124, 133)
+box.office.mil <- c(787, 534, 572)
   
+# combine these vectors with the data.frame() function
+
   starWars.data <- data.frame(title, year, length.min, box.office.mil)
   starWars.data
 
 ```
+ 
+**You get a faster and more efficient data frame using the package *data.table* which also provides more arguments for creating your data frame.**
+
+[data.table package]("https://www.rdocumentation.org/packages/data.table/versions/1.14.8")
  
 ---
 
@@ -682,6 +691,42 @@ view top and bottom of data
   head(fight_songs)
 
 ```
+
+You can perform more advanced analysis in base-r using the built in *stats package*
+
+[stats package]("https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html")
+
+```{r stats package, eval=FALSE}
+
+browseURL("https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html")
+
+```
+
+
+### Function: cor()
+
+get correlation coefficients for two numeric variables
+
+
+```{r correlation, eval=FALSE}
+
+cor(fight_songs$bpm, y = fight_songs$number_fights)
+
+```
+
+
+### Function: lm()
+
+create a linear model to predict the value of an unknown variable based on independent variables.
+
+```{r linear model, eval=FALSE}
+
+model <- lm(data = fight_songs, bpm ~ sec_duration)
+summary(model)
+
+```
+
+
 
 ---
 
